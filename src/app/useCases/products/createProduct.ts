@@ -1,3 +1,24 @@
 import { Request, Response } from 'express'
 
-export function createProduct(req: Request, res: Response) {}
+import { Product } from '../../models/Product'
+
+export async function createProduct(req: Request, res: Response) {
+  try {
+    const imagePath = req.file?.filename
+    const { name, description, price, category, ingredients } = req.body
+
+    const product = await Product.create({
+      name,
+      description,
+      imagePath,
+      category,
+      price: Number(price),
+      ingredients: JSON.parse(ingredients),
+    })
+
+    res.status(201).json(product)
+  } catch (error) {
+    console.error('Error: ', error)
+    res.sendStatus(500)
+  }
+}
