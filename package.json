@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "lint": "eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix",
+    "start": "node dist"
   },
   "dependencies": {
     "express": "^4.21.2",
