@@ -3,17 +3,15 @@ import path from 'node:path'
 import { Router } from 'express'
 import multer from 'multer'
 
-import { cancelCategory } from './app/useCases/categories/cancelCategory'
 import { createCategory } from './app/useCases/categories/createCategory'
 import { listCategories } from './app/useCases/categories/listCategories'
+import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory'
 import { cancelOrder } from './app/useCases/orders/cancelOrder'
 import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus'
 import { createOrder } from './app/useCases/orders/createOrder'
 import { listOrders } from './app/useCases/orders/listOrders'
-import { cancelProduct } from './app/useCases/products/cancelProduct'
 import { createProduct } from './app/useCases/products/createProduct'
 import { listProducts } from './app/useCases/products/listProducts'
-import { listProductsByCategories } from './app/useCases/products/listProductsByCategories'
 
 export const router = Router()
 
@@ -34,20 +32,14 @@ router.get('/categories', listCategories)
 // Create Category
 router.post('/categories', createCategory)
 
-// Delete/Cancel Category
-router.delete('/categories/:categoryId', cancelCategory)
-
 // List Products
 router.get('/products', listProducts)
 
 // Create Product
 router.post('/products', upload.single('image'), createProduct)
 
-// Delete/Cancel Product
-router.delete('/products/:productsId', cancelProduct)
-
 // Get products by category
-router.get('/categories/:categoryId/products', listProductsByCategories)
+router.get('/categories/:categoryId/products', listProductsByCategory)
 
 // List Orders
 router.get('/orders', listOrders)
