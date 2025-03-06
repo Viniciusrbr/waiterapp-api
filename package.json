@@ -17,7 +17,8 @@
     "express": "^4.21.2",
     "mongoose": "^8.10.1",
     "multer": "^1.4.5-lts.1",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.1.0",
